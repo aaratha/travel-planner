@@ -46,6 +46,7 @@ def find_offers(origin, destination, date, adult_n):
 
 
 def get_coordinates(
+    # uses address to find coordinates and add to passengers
         passengers: list[Passenger]) -> None:
     for passenger in passengers:
         try:
@@ -55,7 +56,7 @@ def get_coordinates(
 
 
 
-def get_airports(passengers: list[Passenger]):
+def get_airports(passengers: list[Passenger]) -> None:
     # Finds airports near the passenger's coordinates within MAX_AIRPORT_DISTANCE.
     for passenger in passengers:
         try:
@@ -74,8 +75,15 @@ def get_airports(passengers: list[Passenger]):
 
 
 def main():
-    passengers = [Passenger("Aseem", "62 earl street, toronto, ontario, canada"),
-                  Passenger("Neel", "7512 glenriddle rd., bethesda, maryland, usa")]
+    # main process
+    passengers = [Passenger("Aseem",
+                            "2600 Benjamin Franklin Pkwy, philadelphia"
+                            ),
+                  Passenger("Neel"
+                            , "7512 glenriddle rd., bethesda, maryland, usa"
+                            ),
+                  Passenger("Sven", "san francisco")
+                  ]
     # find_offers('MAD', 'ATH', '2024-11-01', 1)
     get_coordinates(passengers)
     get_airports(passengers)
