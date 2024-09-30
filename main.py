@@ -12,7 +12,7 @@ amadeus = Client(
 INIT_PASSENGERS = {"Aseem": "62 earl st, toronto, ontario, canada",
               "Neel": "7512 glenriddle rd, bethesda, maryland, usa"}
 DESTINATIONS = ["Chicago", "Paris"]
-MAX_AIRPORT_DISTANCE = 100 #km
+MAX_AIRPORT_DISTANCE = 90 #km
 
 class Passenger:
 
@@ -49,7 +49,7 @@ def get_coordinates(
         passengers: list[Passenger]) -> None:
     for passenger in passengers:
         try:
-            passenger.coords = get_coords(passenger.name)
+            passenger.coords = get_coords(passenger.address)
         except ResponseError as error:
             print(f"Error finding coordiantes for {passenger.name}: {error}")
 
